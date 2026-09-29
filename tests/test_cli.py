@@ -1,6 +1,6 @@
+import re
 from pathlib import Path
 
-from click import unstyle
 from typer.testing import CliRunner
 
 from forgepy import __version__
@@ -8,6 +8,7 @@ from forgepy.cli import app
 from forgepy.setup import SetupError, SetupResult
 
 runner = CliRunner()
+ANSI_STYLE = re.compile(r"\x1b\[[0-9;]*m")
 
 
 def test_help() -> None:
@@ -25,7 +26,7 @@ def test_version() -> None:
 def test_create_help_lists_options() -> None:
     result = runner.invoke(app, ["create", "--help"])
     assert result.exit_code == 0
-    help_text = unstyle(result.stdout)
+    help_text = ANSI_STYLE.sub("", result.stdout)
     assert "--template" in help_text
     assert "--no-interactive" in help_text
     assert "--guidance" in help_text
