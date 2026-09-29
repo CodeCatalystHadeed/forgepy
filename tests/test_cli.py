@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from click import unstyle
 from typer.testing import CliRunner
 
 from forgepy import __version__
@@ -24,10 +25,11 @@ def test_version() -> None:
 def test_create_help_lists_options() -> None:
     result = runner.invoke(app, ["create", "--help"])
     assert result.exit_code == 0
-    assert "--template" in result.stdout
-    assert "--no-interactive" in result.stdout
-    assert "--guidance" in result.stdout
-    assert "--setup" in result.stdout
+    help_text = unstyle(result.stdout)
+    assert "--template" in help_text
+    assert "--no-interactive" in help_text
+    assert "--guidance" in help_text
+    assert "--setup" in help_text
 
 
 def test_invalid_command_fails_cleanly() -> None:
