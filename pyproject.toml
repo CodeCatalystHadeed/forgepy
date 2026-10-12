@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.25"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
@@ -15,7 +15,7 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -33,9 +33,10 @@ dependencies = [
 Homepage = "https://github.com/CodeCatalystHadeed/forgepy"
 Repository = "https://github.com/CodeCatalystHadeed/forgepy"
 Issues = "https://github.com/CodeCatalystHadeed/forgepy/issues"
+Changelog = "https://github.com/CodeCatalystHadeed/forgepy/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
-dev = ["build>=1.2", "pytest>=8", "pytest-cov>=5", "ruff>=0.9"]
+dev = ["build>=1.2", "pytest>=8", "pytest-cov>=5", "ruff>=0.9", "twine>=6"]
 
 [project.scripts]
 forgepy = "forgepy.cli:app"
@@ -54,6 +55,7 @@ include = [
   "/RELEASING.md",
   "/SECURITY.md",
   "/CODE_OF_CONDUCT.md",
+  "/scripts",
   "/pyproject.toml",
 ]
 

@@ -71,7 +71,7 @@ Generation is staged before files are committed to the destination. ForgePy refu
 
 ## Installation
 
-Python 3.11 or newer is required. ForgePy is currently distributed directly through GitHub:
+Python 3.11 or newer is required. Install ForgePy from PyPI:
 
 ```console
 python -m venv .venv
@@ -92,12 +92,10 @@ source .venv/bin/activate
 Install and verify ForgePy:
 
 ```console
-python -m pip install "git+https://github.com/CodeCatalystHadeed/forgepy.git@main"
+python -m pip install forgepy
 forgepy --version
 forgepy --help
 ```
-
-PyPI distribution may be added later; it is not the current installation source.
 
 ## Quick start
 

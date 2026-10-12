@@ -11,6 +11,8 @@ Only a repository owner should perform these steps. The release workflows do not
 5. Enable private vulnerability reporting in the repository's **Security** settings.
 6. In PyPI, configure a pending Trusted Publisher with the exact GitHub owner `CodeCatalystHadeed`, repository `forgepy`, workflow filename `publish.yml`, and environment `pypi`. A pending publisher does not reserve the project name.
 
+The exact `forgepy` JSON endpoint returned HTTP 404 during the 2026-10-12 release audit. This means no public project was listed at that time; it does not prove that the name is available or reservable. Confirm the name in the PyPI account UI when creating the pending publisher. Do not rename the distribution without a separate owner decision.
+
 ## Prepare version 1.0.0
 
 1. Start from a clean checkout of the default branch.
@@ -28,6 +30,17 @@ Only a repository owner should perform these steps. The release workflows do not
 
 4. Inspect both archives and repeat the isolated wheel and sdist smoke tests described by CI.
 5. Commit the final release preparation and wait for required CI checks to pass.
+
+## Optional TestPyPI rehearsal
+
+TestPyPI has separate accounts, projects, and Trusted Publisher settings. In TestPyPI, configure a pending publisher for owner `CodeCatalystHadeed`, repository `forgepy`, workflow `test-publish.yml`, and environment `testpypi`. Protect that GitHub environment with a required reviewer, then deliberately dispatch **Publish to TestPyPI** from the reviewed commit. After it succeeds, verify the TestPyPI artifact:
+
+```console
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ forgepy==1.0.0
+forgepy --version
+```
+
+The workflow uses OIDC and does not need a stored API token. A TestPyPI upload does not reserve the corresponding PyPI name.
 
 ## Publish through GitHub and PyPI
 

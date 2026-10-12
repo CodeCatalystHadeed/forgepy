@@ -8,8 +8,11 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 python -m pip install -e ".[dev]"
 python -m ruff check .
+python -m ruff format --check .
 python -m pytest
 python -m build
+python -m twine check dist/*
+python scripts/validate_dist.py dist/*
 ```
 
 Keep changes focused and add tests for behavior. Run the full suite before opening a pull request. Generated projects must compile and must never overwrite pre-existing files.
