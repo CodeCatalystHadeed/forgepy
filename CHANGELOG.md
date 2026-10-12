@@ -4,6 +4,13 @@ All notable changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
+### Fixed
+
+- Updated package licensing metadata for PEP 639 and current Hatchling compatibility.
+- Added distribution-content validation and expanded clean-install template smoke tests.
+- Aligned local, CI, and publishing quality gates, including Ruff formatting checks.
+- Updated PyPI installation and release guidance.
+
 ## [1.0.0] - 2026-09-29
 
 ### Added

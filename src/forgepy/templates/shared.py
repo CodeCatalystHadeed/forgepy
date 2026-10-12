@@ -55,7 +55,7 @@ def project_toml(
         script_block = f'\n[project.scripts]\n"{script[0]}" = "{script[1]}"\n'
     pytest_path = "src" if package_path.startswith("src/") else "."
     return f'''[build-system]
-requires = ["hatchling>=1.25"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
